@@ -1,0 +1,702 @@
+<html lang="en" ng-app="aapDocumentation">
+<head>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.7/angular-material.min.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600,700'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/styles/atelier-forest.dark.min.css'>
+</head>
+<body layout="row" ng-controller="DocsCtrl" ng-cloak>
+<md-sidenav layout="column" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="true">
+
+    <md-toolbar class="md-tall md-hue-2" layout="row" layout-align="space-around center">
+        <img src="data:image/png;base64,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">
+    </md-toolbar>
+
+    <md-list ng-repeat="menu in menus">
+        <md-subheader>{{menu.title}}</md-subheader>
+        <md-item ng-repeat="item in menu.items" ng-class="{active : activeMenu === item}">
+            <a ng-click="setActiveMenu(item)">
+                <md-item-content md-ink-ripple layout="row" layout-align="start center">
+                    <div class="inset">
+                        <ng-md-icon icon="{{item.icon}}"></ng-md-icon>
+                    </div>
+                    <div class="inset">{{item.title}}
+                    </div>
+                </md-item-content>
+            </a>
+        </md-item>
+    </md-list>
+</md-sidenav>
+
+<div layout="column" class="relative" layout-fill role="main">
+    <md-toolbar>
+        <div class="md-toolbar-header">
+            <h2>Documentation</h2>
+        </div>
+        <md-tabs md-stretch-tabs class="md-primary" md-selected="data.selectedIndex" ng-show="activeMenu.link === 'app'">
+            <md-tab id="tab1" aria-controls="tab1-content">
+                Directory Structure
+            </md-tab>
+            <md-tab id="tab2" aria-controls="tab2-content">
+                Modularity
+            </md-tab>
+            <md-tab id="tab3" aria-controls="tab3-content">
+                Third Party Libraries
+            </md-tab>
+            <md-tab id="tab4" aria-controls="tab4-content">
+                Multilanguage
+            </md-tab>
+            <md-tab id="tab5" aria-controls="tab5-content">
+                Api Services
+            </md-tab>
+        </md-tabs>
+    </md-toolbar>
+
+    <md-content flex md-scroll-y>
+        <ui-view layout="column" layout-padding>
+            <div class="inset" hide-sm></div>
+            <div class="content">
+                <h2>{{activeMenu.title}}</h2>
+                <md-list>
+                    <md-item ng-show="activeMenu.link === 'intro'">
+                        <md-item-content>
+                            <div class="md-tile">
+                                Here you can find a list of core libraries, specifications and coding standards
+                                that we use in aap.
+                            </div>
+                            <div class="md-tile-content">
+
+                                <h4>AngularJS</h4>
+                                <span class="inset"><a href="https://angularjs.org/" target="_blank">AngularJS</a>
+                                    is the core of aap. It is not a traditional html template, it's an AngularJS app.
+                                    We strongly recommend checking the AngularJS before start doing anything with aap.</span>
+
+                                <h4>Angular Material</h4>
+                                <span class="inset"><a href="https://material.angularjs.org/latest/" target="_blank">Angular Material</a>
+                                    is a set of AngularJS directives and services that implements
+                                    Material Design Specifications and it's in active development by Google.</span>
+
+                                <h4>John Papa's Angular Style Guide</h4>
+                                <span class="inset">We are following
+                                    <a href="https://github.com/johnpapa/angular-styleguide/tree/master/a1/README.md" target="_blank">John Papa's Angular Style Guide</a>
+                                    to create common patterns throughout the entire application.</span>
+
+                                <h4>Yeoman generator for AngularJS with GulpJS</h4>
+                                <span class="inset">We are using
+                                    <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank">generator-gulp-angular</a>
+                                    package for quickly bootstrapping the application. You can find more information
+                                    about the generator in the <a ng-click="setActiveMenu(menus.gettingStarted.items[1])">Prerequisites</a>
+                                    page.</span>
+                            </div>
+                        </md-item-content>
+                    </md-item>
+
+                    <md-item ng-show="activeMenu.link === 'prerequisites'">
+                        <md-item-content>
+                            <div class="md-tile">
+                                <span class="warning"><b>Note:</b> this section will give you some information about what tools you
+                                    will need. You can skip to the <a ng-click="setActiveMenu(menus.gettingStarted.items[2])">Installation</a>
+                                    section to start installing the template. We already mentioned all the prerequisites and how to install them in the
+                                    <a ng-click="setActiveMenu(menus.gettingStarted.items[2])">Installation</a> section.</span>
+                            </div>
+                            <div class="md-tile-content">
+                                <h4>Yeoman generator for AngularJS with GulpJS</h4>
+                                <span class="inset">aap uses
+                                    <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank">Yeoman generator for AngularJS with GulpJS</a>
+                                    for quickly bootstrapping the application. You can check out the link for more
+                                    detailed information. Simply, <b>Yeoman generator for AngularJS with GulpJS</b>
+                                    will automatically inject any templates, controllers, modules, directives
+                                    and other application related files into the index.html file for you.
+                                    It will also automatically find and compile scss files into one css file
+                                    and inject that one as well.</span>
+
+                                <h4>Node.js</h4>
+                                <span class="inset">To install and use aap, you will need
+                                    <a href="https://nodejs.org/en/" target="_blank">Node.js</a> installed
+                                    to your computer. We won't get into too much detail about Node.js as it's
+                                    out of the scope of this documentation. Also you won't need to actually
+                                    use Node.js, it's only required for the development process.</span>
+
+                                <h4>Git</h4>
+                                <span class="inset">To be able to install and use aap, you will also need
+                                    <a href="https://git-scm.com/" target="_blank">Git</a>
+                                    installed to your computer. Git is required for <b>bower</b> to work correctly.</span>
+
+                                <h4>Bower</h4>
+                                <span class="inset">aap uses <a href="http://bower.io/" target="_blank">Bower</a>
+                                    package manager to install and manage 3rd party components and libraries.</span>
+
+                                <h4>Gulp</h4>
+                                <span class="inset"><a href="http://gulpjs.com/" target="_blank">Gulp</a> is required
+                                    for aap to work properly. Although there are ways to develop without using Gulp or Node.js, we
+                                    strongly recommend you to use them.</span>
+                            </div>
+                        </md-item-content>
+                    </md-item>
+
+                    <md-item ng-show="activeMenu.link === 'installation'">
+                        <md-item-content>
+                            <div class="md-tile-content">
+                                <h4>Installing Prerequisites</h4>
+                                <ol class="steps">
+                                    <li>Download and install the latest <a href="https://nodejs.org/en/" target="_blank">Node.js</a> from its web site.</li>
+                                    <li>Download and install the latest <a href="https://git-scm.com/" target="_blank">Git</a> from its web site.</li>
+                                    <li>
+                                        Open your favorite console application (Terminal, Command Prompt etc.),
+                                        run the following command and wait for it to finish:
+                                        <span hljs>npm install -g bower</span>
+                                    </li>
+                                    <li>
+                                        Run the following command and wait for it to finish:
+                                        <span hljs>npm install -g gulp</span>
+                                    </li>
+                                </ol>
+                                <span>Now you are ready to install the aap.</span>
+
+                                <h4>Installing aap</h4>
+                                <ol>
+                                    <li>Unzip the aap source code zip file</li>
+                                    <li>Extract the contents of the zip file into a folder that you will work within.
+                                        For this documentation, we will refer that as "your work folder".</li>
+                                    <li>
+                                        Open your favorite console application (Terminal, Command Prompt etc.),
+                                        navigate into your work folder, run the following command and wait for it to finish:
+                                        <span hljs>npm install</span>
+                                        This command will install all the required Node.js modules into the
+                                        <b>node_modules</b> directory inside your work folder.
+                                        <span class="warning">
+                                            <b>Note:</b> Installing Node.js packages may throw a lot of warnings and errors along
+                                            the way. As long as the process finishes without any error notes such as
+                                            "Killed", you will be fine.
+                                        </span>
+                                    </li>
+                                    <li>
+                                        Run the following command and wait it for to finish:
+                                        <span hljs>bower install</span>
+                                        This command will install all the required bower packages into
+                                        the <b>bower_components</b> directory inside your work folder.
+                                    </li>
+                                </ol>
+                                <span>And now, you are ready to run the aap for the first time.</span>
+
+                                <h4>Running aap</h4>
+                                <ol>
+                                    <li>
+                                        While still in your work folder, run the following command in the console application:
+                                        <span hljs>gulp serve</span>
+                                        Gulp will take care everything and start the aap.
+                                        Your default browser will be opened automatically, and you will be able
+                                        to navigate through the application.
+                                    </li>
+                                </ol>
+                            </div>
+                        </md-item-content>
+                    </md-item>
+
+                    <md-item ng-show="activeMenu.link === 'app'">
+                        <ng-switch on="data.selectedIndex" class="tabpanel-container" layout="row" layout-align="start center">
+                            <div role="tabpanel"
+                                 id="tab1-content"
+                                 aria-labelledby="tab1"
+                                 ng-switch-when="0"
+                                 md-swipe-left="next()"
+                                 md-swipe-right="previous()">
+                                <md-item-content>
+                                    <div class="md-tile-content">
+                                        <h4>Demo Structure</h4>
+                                        <span class="inset">Here you can see the directory structure of the aap:</span>
+
+                                        <div layout="row" layout-align="start start">
+                                            <img src="data:image/png;base64,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">
+                                            <div class="image-overflow">
+                                                <h4>app/core</h4>
+                                                <span class="inset">Contains all the core elements that required for aap to work.
+                                                    It's highly recommended NOT to touch or modify anything inside the core directory
+                                                    so you can easily update the template when a new version released.</span>
+
+                                                <h4>app/data</h4>
+                                                <span class="inset">Contains all the json files that holds demo data. We are
+                                                    using json files to emulate API calls and the data flow. These json files
+                                                    are good for seeing the data structure we are using in our applications
+                                                    so you can use similar data structure to minimize your work.</span>
+
+                                                <h4>app/main</h4>
+                                                <span class="inset">Contains all the modules. Apps, Components,
+                                                    Custom Pages and everything else you can see in the aap are located
+                                                    in this directory.</span>
+
+                                                <h4>app/sidenav</h4>
+                                                <span class="inset">Contains the sidenav modules.</span>
+
+                                                <h4>app/toolbar</h4>
+                                                <span class="inset">Contains the main toolbar module.</span>
+
+                                                <h4>index.***.js</h4>
+                                                <span class="inset">These files are the entry point of the main application.
+                                                    aap is an Angular module by itself. It means you can add aap as a module into another
+                                                    project.</span>
+
+                                                <h4>index.scss</h4>
+                                                <span class="inset">This is the main scss file. DO NOT REMOVE it as all the other
+                                                    scss files will be injected into this file before compiled to a css file.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </md-item-content>
+                            </div>
+                            <div role="tabpanel"
+                                 id="tab2-content"
+                                 aria-labelledby="tab2"
+                                 ng-switch-when="1"
+                                 md-swipe-left="next()"
+                                 md-swipe-right="previous()">
+                                <md-item-content>
+                                    <div class="md-tile-content">
+                                        <h4>Example Module</h4>
+                                        <span class="inset">aap has a very modular structure and because of it, it's
+                                            very easy to add new modules or remove any of the available modules from the
+                                            app. As an example for the modular structure, we can take a look at the Taskboard
+                                            application:</span>
+                                        <div layout="row" layout-align="start start">
+                                            <img src="data:image/png;base64,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">
+                                            <div class="image-overflow">
+                                                <span class="inset">It might look a little bit too much complicated at first but
+                                                    given enough time, you will realise that working with a modular structure is
+                                                    a lot easier than putting everything together.</span>
+
+                                                <span class="inset">In this example, you can see that everything related to our
+                                                    Taskboard app is in one location. Translations, styles, different pages, dialogs,
+                                                    sidenavs etc. they all are in one place. This will not only make managing
+                                                    your app easier, it also allows you to add/remove modules (even in runtime)
+                                                    without creating wholes or dead-ends in your application.</span>
+
+                                                <h4>Adding a Module</h4>
+                                                <span class="inset">To add a new module, simply put your module files into your
+                                                    preferred location inside the <code>app/</code> directory and then add the module name as
+                                                    a dependency into the <code>app/index.module.js</code> file.</span>
+
+                                                <span class="inset">You don't need worry about injecting any of your module
+                                                    files into anywhere else as Yeoman generator for AngularJS with GulpJS does
+                                                    that automatically. It will automatically find your controllers, directives,
+                                                    html templates, css files etc. and it will inject them into correct locations.</span>
+
+                                                <h4>Removing a Module</h4>
+                                                <span class="inset">Removing a module is very easy too. All you have to do is to
+                                                    locate the module name from dependency list inside the <code>app/index.module.js</code>
+                                                    file and remove it. Then you can remove the actual module files. Just like
+                                                    adding a new module, you don't have to worry about any leftover injectors
+                                                    as they were automatically injected by Yeoman generator for AngularJS with GulpJS.</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </md-item-content>
+                            </div>
+                            <div role="tabpanel"
+                                 id="tab3-content"
+                                 aria-labelledby="tab3"
+                                 ng-switch-when="2"
+                                 md-swipe-left="next()"
+                                 md-swipe-right="previous()">
+                                <md-item-content>
+                                    <div class="md-tile-content">
+                                        <h4>Third Party Libraries</h4>
+                                        aap uses Bower package manager to manage third-party libraries. Combined with the
+                                        generator, you can add, remove or update third-party libraries in a matter of seconds.
+
+                                        <h4>Adding a Third-Party Library</h4>
+                                        <span class="inset">To add a third party library to your application, open your
+                                            favorite console application (Terminal, Command Prompt etc.), navigate to your
+                                            work folder and run the following command by replacing the PACKAGE_NAME with the
+                                            actual name of the package you want to uninstall:</span>
+
+                                        <span hljs>bower install PACKAGE_NAME --save</span>
+
+                                        <span class="inset">If you are installing an AngularJS module, then you have to
+                                            add it as a dependency to your application. You can do that either in <code>/app/core/core.module.js</code>
+                                            file or in <code>/app/index.module.js</code> file.</span>
+
+                                        <h4>Removing a Third-Party Library</h4>
+
+                                        <span class="inset">To remove a third party library from your application, open
+                                            your favorite console application (Terminal, Command Prompt etc.), navigate
+                                            to your work folder and run the following command by replacing the PACKAGE_NAME
+                                            with the actual name of the package you want to install:</span>
+
+                                        <span hljs>bower uninstall PACKAGE_NAME --save</span>
+
+                                        <span class="inset">If you are uninstalling an AngularJS module, make sure you
+                                            remove it from your dependencies lists as well. You can check both <code>/app/core/core.module.js</code>
+                                            file and <code>/app/index.module.js</code> file to make sure you remove the dependency injections.</span>
+
+                                        <span class="warning"><b>Note:</b> Other than adding or removing package names to or from
+                                            the dependency lists, you shouldn't need to anything else to include the actual
+                                            library into your application. Just reload your server and everything will be
+                                            injected automatically.</span>
+
+                                        <span class="warning"><b>Note:</b> Sometimes, bower packages might have dependencies to
+                                            other packages. Normally, uninstalling a package will remove its dependencies
+                                            only if those dependencies are not in use. If you find yourself with lots of
+                                            unnecessary packages in your bower_components folder, running
+
+                                            <span hljs>bower prune</span>
+
+                                            command will remove all the unnecessary packages. This should only uninstall
+                                            the packages that are not in use, but you should still be careful. Bower will
+                                            output the names of the removed modules to the console, so pay attention when
+                                            you run the above command and make sure it didn't remove any important packages.</span>
+                                    </div>
+                                </md-item-content>
+                            </div>
+                            <div role="tabpanel"
+                                 id="tab4-content"
+                                 aria-labelledby="tab4"
+                                 ng-switch-when="3"
+                                 md-swipe-left="next()"
+                                 md-swipe-right="previous()">
+                                <md-item-content>
+                                    <div class="md-tile">
+                                        aap uses angular-translate module to manage multiple languages.
+                                        We already made some configurations and prepared the directory structure
+                                        for you to quickly start working with it.
+                                    </div>
+                                    <div class="md-tile-content">
+                                        <h4>Important Notes</h4>
+                                        <span class="inset">Before you start working on the multiple languages, there are
+                                            couple things you need to know about angular-translate module. Even though
+                                            the module itself is out of scope of this documentation, we will talk about
+                                            couple things to make your life easier.</span>
+
+                                        <span class="inset">angular-translate module will <b>NOT</b> work with missing
+                                            language files. For example, if you add a new language (let's say Portuguese),
+                                            you have to create <b>pt.json</b> files for every module you have! If angular-translate
+                                            module is missing even one translation file, it won't activate the language.
+                                            There are ways to make the module work even with missing files, but you need
+                                            to check out the official documentation to learn more about it.</span>
+                                    </div>
+                                </md-item-content>
+                            </div>
+                            <div role="tabpanel"
+                                 id="tab5-content"
+                                 aria-labelledby="tab5"
+                                 ng-switch-when="4"
+                                 md-swipe-left="next()"
+                                 md-swipe-right="previous()">
+                                <md-item-content>
+                                    <div class="md-tile-content">
+                                        <h4>API</h4>
+                                        <span class="inset">aap comes with 2 different methods for APIs. They are
+                                            nothing more than convenient ways of storing and calling $resource objects.</span>
+
+                                        <span class="inset">If you want to keep all your API endpoint definitions separated
+                                            from each other than this is the suitable method for you. In aap, all the
+                                            applications and pages that requires a simulated API call are using this method.
+                                            Mainly because with using this method, we are following the modular structure
+                                            of the aap. Every module can live by itself and removing one will not affect
+                                            others or will not left any unnecessary codes behind.</span>
+
+                                        <span class="inset">This method requires the <b>msApi</b> service which can be found
+                                            in <code>/app/core/services/ms-api.provider.js</code> file.</span>
+
+
+                                        <h4>Defining API Endpoints</h4>
+                                        <span class="inset">To register your API endpoints, you can use the following
+                                            method in the <b>config</b> blocks of your modules:</span>
+<span hljs>
+/** @ngInject */
+function config($stateProvider, msApiProvider)
+{
+    // State
+    $stateProvider.state('app.somepage', {
+        url    : '/somepage',
+        views  : {
+            // ...
+        },
+        resolve: {
+            PageData: function (msApi)
+            {
+                return msApi.resolve('app.somepage@get');
+            }
+        }
+    });
+    // Api
+    msApiProvider.register('app.somepage', ['http://myapi.com/pageData']);
+}</span>
+                                        <span class="inset">If we look at the above example, you can see that we registered
+                                            our API endpoint using the <code>msApiProvider.register()</code> method and then resolved
+                                            it in the state definition by using the <code>msApi.resolve()</code> method.</span>
+
+                                        <span class="warning">Keep in mind, <b>msApi</b> and <b>msApiProvider</b> are essentially the
+                                            same service. It has both provider and a normal service so you can inject
+                                            it into Config blocks as well as into Controllers and other Services.</span>
+
+                                        <h4>Register</h4>
+                                        <span class="inset"><b>register</b> method is available in both <code>msApi</code> and <code>msApiProvider</code>.</span>
+                                        <span hljs>msApiProvider.register(Name, Resource);</span>
+                                        <span hljs>msApi.register(Name, Resource);</span>
+
+                                        <span class="inset">The <b>resource</b> parameter is essentially the exact same thing
+                                            that you would put into a <b>$resource</b> service. So lets say you have the
+                                            following <b>$resource</b> definition:</span>
+                                        <span hljs>$resource(url, paramDefaults, actions, options);</span>
+                                        <span class="inset">You would simply put definitions inside the <b>resource</b> array
+                                            just like you were defining a <b>$resource</b> object:</span>
+                                        <span hljs>msApiProvider.register('getTaskboard', [url, paramDefaults, actions, options]);</span>
+                                        <span class="inset">Basically, we moved everything from inside the <b>$resource</b>
+                                            definition into the <b>resource</b> array. The <b>paramDefaults</b>, <b>actions</b> and <b>options</b>
+                                            are optional just like they are in the $resource.</span>
+
+                                        <h4>Request</h4>
+                                        <span class="inset">To call the APIs in Controllers and other Services, you can
+                                            use the <code>request</code> method. It is only available in <code>msApi</code> service.</span>
+                                         <span hljs>msApi.request(Action, Parameters, Success, Error);</span>
+<span hljs>/** @ngInject */
+function TaskboardController(msApi)
+{
+    var vm = this;
+    // Data
+    vm.taskboardId = 3;
+    //////////
+    msApi.request('getTaskboard@get', {id: vm.taskboardId},
+    // SUCCESS
+    function (response)
+        {
+            console.log(response.data)
+        },
+        // ERROR
+        function (response)
+        {
+            console.error(response.data)
+        }
+    );
+}</span>
+                                        <h4>Resolve</h4>
+                                        <span class="inset"><b>resolve</b> is a special method that you can use in the state
+                                            definitions. It will return a promise object and is only available in <code>msApiProvider</code>.</span>
+                                        <span hljs>msApiProvider.request(Action, Parameters);</span>
+
+<span hljs>/** @ngInject */
+function config($stateProvider, msApiProvider)
+    {
+    // State
+    $stateProvider.state('app.somepage', {
+        url    : '/somepage',
+        views  : {
+            // ...
+        },
+        resolve: {
+            PageData: function (msApi)
+            {
+                return msApi.resolve('app.somepage@get');
+            }
+        }
+    });
+    // Api
+    msApiProvider.register('app.somepage', ['http://myapi.com/pageData']);
+}</span>
+                                    </div>
+                                </md-item-content>
+                            </div>
+                        </ng-switch>
+                    </md-item>
+
+                    <md-item ng-show="activeMenu.link === 'server'">
+                        <md-item-content>
+                            <div class="md-tile-content">
+                                <h4>Server</h4>
+                                <span class="inset">As we mentioned before, aap uses <b>Yeoman generator for AngularJS with GulpJS</b> for
+                                    quickly bootstrapping the application and it comes with a built-in server setup so
+                                    you don't have to worry about setting up a server for your development environment.</span>
+
+                                <span class="inset">The built-in server setup uses <a href="https://www.browsersync.io/" target="_blank">browser-sync</a>.
+                                    There are a lot of benefits of using browser-sync such as testing your app in multiple
+                                    browser windows and even across multiple devices. Browser-sync will synchronise your actions
+                                    such as clicking and scrolling across browser windows and devices to make testing easier.</span>
+
+                                <span class="inset">To start the server, run the following command in your favorite console
+                                    application (Terminal, Command Prompt etc.) while in your work folder:</span>
+                                <span hljs>gulp serve</span>
+                                <span class="inset">This will start up the server, compile scss files, inject dependencies, and will
+                                    do all other related jobs for you. Then it will automatically fire up your default
+                                    browser and redirect you to the <b>http://localhost:3000</b> by default.</span>
+
+                                <span class="inset">You can check out your console application to get further information about the server.
+                                    By default, it will run on <b>http://localhost:3000</b> but it might change depending on your setup.</span>
+
+                                <h4>Reloading the Server</h4>
+                                <span class="inset">The <code>gulp serve</code> command will watch your files and reload the page for you as
+                                    you make changes. But for some reason, if you need to manually restart the server, you can do it by pressing
+                                    <b>Ctrl + C</b> on your keyboard while in the console application and then run the following command once again:</span>
+                                <span hljs>gulp serve</span>
+                            </div>
+                        </md-item-content>
+                    </md-item>
+
+                    <md-item ng-show="activeMenu.link === 'production'">
+                        <md-item-content>
+                            <div class="md-tile-content">
+                                <h4>What is building?</h4>
+                                <span class="inset">Once you finish your development, you can build the
+                                    application. Building process is a combination of couple other processes.</span>
+
+                                <span class="inset">Mainly, after building your application, all your html files are going to be
+                                    injected into a single javascript file and they will become entities in the Angular's
+                                    <b>$templateCache</b> service. All your style and javascript files will be minified and
+                                    uglified. And most importantly, you will be able to run your application from a
+                                    simple host without needing Node.js, Gulp or any other tools we mentioned.</span>
+
+                                <span class="inset">Your app will become a simple HTML/Javascript application.</span>
+
+                                <h4>Building</h4>
+                                <span class="inset">To build your application, simply run the following command in your favorite
+                                    console application (Terminal, Command Prompt etc.) and wait for it to finish:</span>
+                                <span hljs>gulp build</span>
+                                <span class="inset">And that's it. Now the production version of your app is living under the <b>/dist</b>
+                                    directory within your work folder. You can directly upload the contents of <b>/dist</b>
+                                    folder to your server, and it will work.</span>
+                                <span class="warning"><b>Note:</b> If you are going to work within a subfolder, you need to
+                                    edit the index.html file and modify the following line according to your directory structure:</span>
+                                <span hljs><base href="/"></span>
+                                For example, if you are going to work from a folder called aap in your host, then you have
+                                to modify the base link like this:
+                                <span hljs><base href="/aap/"></span>
+
+                                <h4>.htaccess</h4>
+                                <span class="inset">aap uses HTML5 mode in its location service. It means, you will see URLs like
+                                    www.aap.com/taskboard rather than seeing URLs like this one: www.aap.com/#/taskboard</span>
+
+                                <span class="inset">Also, without following .htaccess rules, you can't access your application directly.
+                                    So typing www.aap.com/taskboard to the url bar or refreshing your application will cause
+                                    an Internal Server Error.</span>
+
+                                <span class="inset">Create an .htaccess that stays with the same directory as your index.html and paste
+                                    the following code inside it:</span>
+<span hljs no-escape>
+&lt;IfModule mod_rewrite.c&gt;
+    RewriteEngine On
+    # Send all requests to the index.html unless
+    # it's a directory or a file that actually exists
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.html [L]
+&lt;/IfModule&gt;</span>
+
+                            </div>
+                        </md-item-content>
+                    </md-item>
+                </md-list>
+            </div>
+
+        </ui-view>
+    </md-content>
+</div>
+<!-- Angular Material Dependencies -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-animate.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-aria.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.7/angular-material.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material-icons/0.7.0/angular-material-icons.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.3.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-highlightjs/0.6.1/angular-highlightjs.min.js"></script>
+</body>
+</html>
+
+
+<script type="text/javascript">
+    var app = angular.module('aapDocumentation', ['ngMaterial', 'ngMdIcons', 'hljs']);
+
+    app.controller('DocsCtrl', ['$scope', function($scope){
+        $scope.menus = {
+            gettingStarted: {
+                title: 'Getting Started',
+                items: [
+                    {
+                        link: 'intro',
+                        title: 'Introduction',
+                        icon: 'info'
+                    },
+                    {
+                        link: 'prerequisites',
+                        title: 'Prerequisites',
+                        icon: 'layers'
+                    },
+                    {
+                        link: 'installation',
+                        title: 'Installation',
+                        icon: 'dvr'
+                    }
+                ]
+            },
+            workingWith:{
+                title: 'Working With aap',
+                items: [
+                    {
+                        link : 'app',
+                        title: 'Application',
+                        icon: 'web'
+                    },
+                    {
+                        link : 'server',
+                        title: 'Server',
+                        icon: 'settings'
+                    },
+                    {
+                        link : 'production',
+                        title: 'Production',
+                        icon: 'cloud_upload'
+                    }
+                ]
+            }
+        };
+
+        $scope.activeMenu = $scope.menus.gettingStarted.items[0];
+        $scope.setActiveMenu = function(menuItem) {
+            $scope.activeMenu = menuItem
+        };
+    }]);
+
+    app.config(function($mdThemingProvider) {
+        var aapBlueMap = 		$mdThemingProvider.extendPalette('light-blue', {
+            'contrastDefaultColor': 'light',
+            'contrastDarkColors': ['50'],
+            '50': 'ffffff',
+            '500': '50caec',
+            '600': '43B7D8'
+        });
+        $mdThemingProvider.definePalette('aapBlue', aapBlueMap);
+        $mdThemingProvider.theme('default')
+                .primaryPalette('aapBlue', {
+                    'default': '600',
+                    'hue-1': '50',
+                    'hue-2': '500'
+                })
+                .accentPalette('grey');
+        $mdThemingProvider.theme('input', 'default')
+                .primaryPalette('blue-grey')
+    });
+</script>
+
+<style>
+    body{font-family:"Source Sans Pro",sans-serif;}
+    md-content{background: #F9F9F9;}
+    ol li {padding: 4px 0;}
+    h2{font-weight: 400;}
+    code {background-color: rgb(229, 241, 245);border-radius: 5px;font-size: 16px;padding: 1px 4px;}
+    .hljs{margin: 12px 0;padding: 16px;display: block;border-radius: 5px;}
+    .content a{color: #0AACDA; text-decoration: none; border-bottom: 1px dotted; cursor: pointer}
+    .content h4{margin: 28px 0 0;color: #2C98B7;font-weight: 400;font-size: 22px;}
+    .content h2{margin-bottom: 0;}
+    .content h2:first-of-type{margin-top: 0;}
+    .content .md-tile{margin-bottom: 30px;}
+    .content .inset {display: inline-block}
+    .content span.warning {display: block;margin: 12px 0;padding: 16px;border-radius: 5px;background-color: #FFE0B2;border: 1px solid #FFCC80}
+    .content .image-overflow {padding-left: 20px}
+    .content .image-overflow h4:first-child{margin: 0}
+    md-toolbar .md-button.md-default-theme{border-radius: 99%;}
+    md-toolbar .md-toolbar-header{padding: 0 20px;}
+    md-toolbar .md-toolbar-section{border-radius: 99%;}
+    md-sidenav{fill: #737373;}
+    md-sidenav md-item{cursor: pointer;}
+    md-sidenav md-item md-item-content{position: relative;}
+    md-sidenav md-item.active md-item-content{background-color: rgb(80,202,236); color: #fff; fill: #fff;}
+    .content{padding: 10px 60px;}
+
+</style>
