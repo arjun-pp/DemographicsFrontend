@@ -1,0 +1,21 @@
+<div id="layout-horizontal-navigation" class="template-layout" layout="row" flex>
+
+    <div id="content-container" flex layout="column">
+        <md-progress-linear id="toolbar-progress" ng-if="$root.loadingProgress" class="md-accent"
+                            md-mode="indeterminate">
+        </md-progress-linear>
+        <div id="horizontal-navigation" layout="row" layout-align="start center" ui-view="navigation"></div>
+        <md-content id="content" class="animate-slide-up md-background md-hue-1" 
+            ms-scroll ui-view="content" flex>
+        </md-content>
+    </div>
+
+    <!-- School SIDENAV -->
+    <div class="school-sidenav">
+        <md-sidenav id="school-sidenav" class="md-sidenav-right" md-component-id="school-sidenav"
+                    ng-include="'app/main/school/school.html'"
+                    ng-controller="SchoolController as vm"
+                    ms-sidenav-helper>
+        </md-sidenav>
+    </div>
+</div>

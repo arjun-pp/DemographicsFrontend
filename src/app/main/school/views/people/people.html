@@ -1,0 +1,20 @@
+<div layout="row" ng-controller="PeopleController as vm" class="school-people">
+	<!-- <div flex="25" layout="column" class="left-column" ng-hide="showTeacherProfile || showStudentProfile">
+		<md-button ng-click="vm.getTeachers()">
+			<h5 ng-class="{'dark-active-color': vm.showTeachers}">Teachers</h5>
+		</md-button>
+		<md-button ng-click="vm.getStudents()">
+			<h5 ng-class="{'dark-active-color': !vm.showTeachers}">Students</h5>
+		</md-button>
+ 		</div>
+ 	-->
+	
+	<div flex>
+		<div ng-include src="'app/main/school/views/people/views/teachers.html'" 
+			ng-if="vm.showTeachers">
+		</div>
+		<!-- <div ng-include src="'app/main/school/views/people/views/students.html'" 
+			ng-if="!vm.showTeachers">
+		</div> -->
+	</div>
+</div>

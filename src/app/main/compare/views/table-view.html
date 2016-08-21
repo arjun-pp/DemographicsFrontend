@@ -1,0 +1,17 @@
+<md-button class="md-fab" ng-click="showIndicatorDialog($event)"
+           aria-label="Toggle Mobile Navigation" style="position: absolute;
+    right: 16px;
+    bottom: 16px;">
+    <md-icon md-font-icon="icon-plus"></md-icon>
+</md-button>
+
+<div>
+	<!-- <md-button class="md-raised" id='toggleFiltering' ng-click="toggleFiltering()" style="margin-top:10px; margin-right: 0px;">Toggle Filters</md-button> -->
+	<div id="compareGrid" ui-grid="gridOpts" class="grid" ng-if="gridOpts.data.length"></div>
+	<div ng-if="!gridOpts.data.length" style="text-align: center; margin-top:100px;">
+	<h2 style="width:400px; max-width:80%; margin:0 auto 20px;">You need to select indicators to compare. You can do so by clicking the circular button in the bottom right or just below.</h2>
+	<md-button class="md-warn md-raised" ng-click="showIndicatorDialog($event)" md-autofocus>
+		Add an Indicator
+	</md-button>
+	</div>
+</div>

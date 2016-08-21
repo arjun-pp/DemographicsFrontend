@@ -1,0 +1,35 @@
+.search-container{
+
+    md-icon{
+        margin: 15px 2px;
+        line-height: 25px;
+        color: #EAEAEA;
+    }
+
+    .search-box{
+        margin: 10px 0px;
+        width: 300px;
+
+        md-autocomplete-wrap{
+            box-shadow: none !important;
+        }
+
+        button{
+            display: none;
+        }
+    }
+}
+
+.md-autocomplete-suggestions{
+
+    li{
+        border-bottom: 1px solid #EAEAEA;
+        background: white;
+        line-height: 24px;
+        word-wrap: break-word;
+
+        h5{
+            text-transform: capitalize;
+        }
+    }
+}

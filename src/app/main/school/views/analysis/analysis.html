@@ -1,0 +1,171 @@
+<style>
+.analysisGrid {
+	width: 400px;
+    height: 300px;
+}
+</style>
+<div layout="row" ng-controller="AnalysisController as vm">
+	<md-sidenav
+	    class="md-sidenav-left"
+	    md-component-id="indicator-menu-sidenav"
+	    id="indicator-menu-sidenav"
+	    md-is-locked-open="$mdMedia('gt-xs')"
+	    md-disable-backdrop
+
+	    style="max-width:280px;background:#fafafa ;"
+	    >
+        <md-progress-linear md-mode="indeterminate" ng-if="vm.loadingRanks"></md-progress-linear>
+
+
+        <div style="border-left: 4px solid {{indicator.schoolRankColor}}; border-bottom: 1px solid #ffffff; color: {{indicator.schoolRankColor}}" 
+        ng-repeat="indicator in indicators track by $index">
+    	    <md-button aria-label="indicator name" style="text-align:left; display:block; padding-left:10px; opacity:1;z-index:100;">
+    			<h5 ng-class="{'dark-active-color': indicator.active}"
+    				ng-click="vm.makeActive($index)"
+                    style="opacity:0.8;">{{indicator.display_long}}</h5>
+    		</md-button>
+        </div>
+	</md-sidenav>
+
+	<div flex layout="column" class="right-column" style="background:white;">
+        <md-progress-linear md-mode="indeterminate" ng-if="vm.loadingCharts"></md-progress-linear>
+
+        <md-button hide show-xs class="md-icon-button left-button" aria-label="Settings" ng-click="vm.toggle()">
+            <md-icon md-font-icon="icon-menu" class="icon"></md-icon>
+        </md-button>
+        <br><center><h2>{{indicators[vm.activeIndex]["display_long"]}}</h2></center>
+        <div ng-if="vm.ranks[vm.activeIndex]" style="margin:20px;margin-left:20px;">
+        	<center>
+        	<h3>
+                You are ranked {{vm.ranks[vm.activeIndex]}} in Delhi.<br>
+        	</h3>
+        	<!-- <h3>Here is some detailed analysis for you:</h3> -->
+        	</center>
+        
+        <div ng-if="vm.activeIndex===0">
+            <md-content class="md-padding" layout-xs="column" layout="row"> 
+                <div flex-xs layout="column">
+                <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                    <md-card-title>
+                      <md-card-title-text>
+                        <span class="md-headline">Student Classroom Ratio: 2015</span>
+                      </md-card-title-text>
+                    </md-card-title>                    
+                        <md-card-content layout="row" layout-align="space-between">
+                            <div google-chart chart="vm.myChartObject{{vm.activeIndex}}" class='chart-wrapper'></div>
+                        </md-card-content>
+                </md-card>
+                </div>
+            </md-content>
+
+            <md-content class="md-padding" layout-xs="column" layout="row"> 
+                <div flex-xs layout="column">
+                <md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+                    <md-card-title>
+                      <md-card-title-text>
+                        <span class="md-headline">Student Classroom Ratio (Historical): 2012-15</span>
+                      </md-card-title-text>
+                    </md-card-title>                    
+                        <md-card-content layout="row" layout-align="space-between">
+                            <div google-chart chart="vm.myChart1Object{{vm.activeIndex}}" class='chart-wrapper'></div>
+                        </md-card-content>
+                </md-card>
+                </div>
+            </md-content>        
+        </div>
+    
+        <div ng-if="vm.activeIndex===1">
+        	<div google-chart chart="vm.myChartObject{{vm.activeIndex}}" class='chart-wrapper'></div>
+        	<div google-chart chart="vm.myChart1Object{{vm.activeIndex}}" class='chart-wrapper'></div>
+            <!--<div google-chart chart="vm.myChart2Object{{vm.activeIndex}}" class='chart-wrapper'></div>-->
+        	<div id="grid{{vm.activeIndex}}" ui-grid="gridOpts1" class="analysisGrid" ng-if="gridOpts1.data.length"></div>
+        </div>
+        <div ng-if="vm.activeIndex===2">
+        	<div google-chart chart="vm.myChartObject{{vm.activeIndex}}" class='chart-wrapper'></div>
+        	<div google-chart chart="vm.myChart1Object{{vm.activeIndex}}" class='chart-wrapper'></div>
+            <div id="grid{{vm.activeIndex}}" ui-grid="gridOpts2" class="analysisGrid"></div>
+        </div>
+        <div ng-if="vm.activeIndex===3">
+        	<div google-chart chart="vm.myChart1Object{{vm.activeIndex}}" class='chart-wrapper'></div>
+	    	<div google-chart chart="vm.myChartObject{{vm.activeIndex}}" class='chart-wrapper'></div>
+	
+        </div>
+        <div ng-if="vm.activeIndex===4">
+        	<div google-chart chart="vm.myChartObject{{vm.activeIndex}}" class='chart-wrapper'></div>
+        </div>
+        <div ng-if="vm.activeIndex===5">
+        	<div google-chart chart="vm.myChartObject{{vm.activeIndex}}" class='chart-wrapper'></div>
+           	<div google-chart chart="vm.myChart1Object{{vm.activeIndex}}" class='chart-wrapper'></div>
+        </div>
+        <div ng-if="vm.activeIndex===6">
+        	<div google-chart chart="vm.myChartObject{{vm.activeIndex}}" class='chart-wrapper'></div>
+            <div google-chart chart="vm.myChart1Object{{vm.activeIndex}}" class='chart-wrapper'></div>
+        </div>
+
+        <div ng-if="vm.activeIndex===7">
+        	<div google-chart chart="vm.myChart1Object{{vm.activeIndex}}" class='chart-wrapper'></div>
+        	<div google-chart chart="vm.myChartObject{{vm.activeIndex}}" class='chart-wrapper'></div>
+        </div>
+
+        <div ng-if="vm.activeIndex===8">
+        	<div google-chart chart="vm.myChart1Object{{vm.activeIndex}}" class='chart-wrapper'></div>
+            <div google-chart chart="vm.myChart2Object{{vm.activeIndex}}" class='chart-wrapper'></div>
+        	<div google-chart chart="vm.myChartObject{{vm.activeIndex}}" class='chart-wrapper'></div>
+        </div>
+
+        <div ng-if="vm.activeIndex===9">
+        	<div google-chart chart="vm.myChartObject{{vm.activeIndex}}" class='chart-wrapper'></div>
+        	<div google-chart chart="vm.myChart1Object{{vm.activeIndex}}" class='chart-wrapper'></div>
+        </div>
+
+        <div ng-if="vm.activeIndex===10">
+            <div google-chart chart="vm.myChartObject{{vm.activeIndex}}" class='chart-wrapper'></div>
+            <div google-chart chart="vm.myChart1Object{{vm.activeIndex}}" class='chart-wrapper'></div>
+        </div>
+
+        <div ng-if="vm.activeIndex===11">
+            <div google-chart chart="vm.myChartObject{{vm.activeIndex}}" class='chart-wrapper'></div>
+<!--             <div google-chart chart="vm.myChart1Object{{vm.activeIndex}}" class='chart-wrapper'></div>
+ -->        </div>
+
+        <div ng-if="vm.activeIndex===12">
+            <div google-chart chart="vm.myChartObject{{vm.activeIndex}}" class='chart-wrapper'></div>
+<!--             <div google-chart chart="vm.myChart1Object{{vm.activeIndex}}" class='chart-wrapper'></div>
+ -->        </div>   
+
+        <div ng-if="vm.activeIndex===13">
+            <div google-chart chart="vm.myChartObject{{vm.activeIndex}}" class='chart-wrapper'></div>
+<!--             <div google-chart chart="vm.myChart1Object{{vm.activeIndex}}" class='chart-wrapper'></div>
+ -->        </div>   
+
+        <div ng-if="vm.activeIndex===14">
+            <div google-chart chart="vm.myChartObject{{vm.activeIndex}}" class='chart-wrapper'></div>
+            </div>
+        <div ng-if="vm.activeIndex===15">
+            <div google-chart chart="vm.myChartObject{{vm.activeIndex}}" class='chart-wrapper'></div>
+        </div>
+
+        <div ng-if="vm.activeIndex===16">
+            <div google-chart chart="vm.myChartObject{{vm.activeIndex}}" class='chart-wrapper'></div>
+        </div>
+
+        <div ng-if="vm.activeIndex===17">
+            <div google-chart chart="vm.myChartObject{{vm.activeIndex}}" class='chart-wrapper'></div>
+        </div>
+
+        <div ng-if="vm.activeIndex===15">
+            <div google-chart chart="vm.myChartObject{{vm.activeIndex}}" class='chart-wrapper'></div>
+            <!--<div google-chart chart="vm.myChart1Object{{vm.activeIndex}}" class='chart-wrapper'></div>-->
+            <div google-chart chart="vm.myChart2Object{{vm.activeIndex}}" class='chart-wrapper'></div>
+            </div>
+
+        <div ng-if="vm.activeIndex===16">
+            <div google-chart chart="vm.myChartObject{{vm.activeIndex}}" class='chart-wrapper'></div>
+            </div>
+
+        <div ng-if="vm.activeIndex===17">
+            <div google-chart chart="vm.myChartObject{{vm.activeIndex}}" class='chart-wrapper'></div>
+            <div google-chart chart="vm.myChart1Object{{vm.activeIndex}}" class='chart-wrapper'></div>
+        </div>
+    </div>  
+</div>

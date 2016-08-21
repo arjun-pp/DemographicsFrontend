@@ -1,0 +1,12 @@
+<div layout="column" ng-controller="PeopleController as vm" class="school-people">
+	<md-button class="small-content-block" ng-repeat="teacher in vm.teachers track by $index"
+		ng-click="vm.showTeacherProfile($index)">
+		<div layout="row">
+			<img ng-src="{{teacher.profileImageUrl}}" class="small-profile-avatar"/>
+			<div layout="column">
+				<h3 ng-bind-html="teacher.name"></h3>
+				<h3 ng-bind-html="teacher.empid"></h3>
+			</div>
+		</div>
+	</md-button>
+</div>

@@ -1,0 +1,84 @@
+    /**
+ *  Do not remove this comments bellow. It's the markers used by wiredep to inject
+ *  sass dependencies when defined in the bower.json of your dependencies
+ */
+// bower:scss
+// endbower
+
+/**
+ *  Do not remove this comments bellow. It's the markers used by gulp-inject to inject
+ *  all your sass files automatically
+ */
+// injector
+// endinjector
+
+h1, h2, h3, h4, h5{
+	margin: 0px;
+	padding: 0px !important;
+}
+
+.content-block{
+	background-color: white;
+	margin: 5px 0px;
+    position: relative;
+	padding: 20px 30px;
+}
+
+h4{
+    font-size: 16px;
+    opacity: 0.5;
+    font-weight: normal;
+    line-height: 1.38;
+    letter-spacing: 0.3px;
+}
+
+h5{
+    font-size: 13px;
+    opacity: 0.5;
+    font-weight: normal;
+    letter-spacing: 0.3px;
+}
+
+h2{
+    font-size: 22px;
+    font-weight: 300;
+}
+
+h3 {
+    font-weight: 400;
+}
+h1{
+    font-size: 24px;
+    font-weight: 450;
+}
+
+.active-color{
+    color: #50caec !important;
+    opacity: 1 !important;
+}
+
+.dark-active-color{
+    opacity: 1;
+    font-weight: 600;
+}
+
+.medium-profile-avatar{
+    width: 55px;
+    height: 55px;
+    border-radius: 10px;
+}
+
+.small-profile-avatar{
+    width: 30px;
+    height: 30px;
+    border-radius: 10px;
+}
+
+.carddemoBasicUsage .card-media {
+  background-color: #999999; }
+
+.md-headline {
+    text-align: center;
+    font-size: 18px;
+}
+

@@ -1,0 +1,29 @@
+.school-people{
+
+	.content-block,
+	.small-content-block{
+		border-bottom: 1px solid #fafafa;
+		width: 50%;
+		border-radius: 0px;
+		text-align: left;
+		color: #444952;
+		margin: 0px;
+
+		h1, h2, h3, h4, h5{
+			line-height: 30px;
+		}
+
+        .medium-profile-avatar{
+            margin-right: 12px;
+        }
+
+        .small-profile-avatar{
+            margin-right: 10px;
+        }
+	}
+
+	.small-content-block{
+		padding: 10px;
+		text-transform: none;
+	}
+}

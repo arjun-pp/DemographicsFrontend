@@ -1,0 +1,35 @@
+<div class="teacher-profile" layout="column" ng-controller="TeacherController as vm"
+	layout-padding>
+	<div layout="row">	
+        <md-button class="md-icon-button left-button" aria-label="Settings" ng-click="vm.closeTeacherProfile()">
+            <md-icon md-font-icon="icon-arrow-left" class="icon"></md-icon>
+        </md-button>
+		<div layout="column">
+			<h2 ng-bind-html="vm.teacher.name"></h2>
+			<h3 ng-bind-html="vm.teacher.empid"></h3>
+			<h3>{{vm.teacher.post}}</h3>
+		</div>
+	</div>
+	<div layout-padding>
+		<h3>Past attendance graph with time (daily, monthly)</h3>
+		<h5>Teacher Attendance</h5>
+        <!--<canvas id="bar" class="chart chart-bar"-->
+                <!--chart-data="{{vm.data}}" chart-labels="{{vm.labels}}">-->
+        <!--</canvas>-->
+
+        <div google-chart chart="vm.myChartObject"  class='chart-wrapper'></div>
+		<!--<canvas id="canvas" ng-attr-line-chart ng-attr-chart-data="{{vm.myData}}"></canvas>-->
+	</div>
+	<div layout-padding>
+		<h3>Pupil Teacher Ratio</h3>
+		<h5>Pupil Teacher Ratio</h5>
+	</div>
+	<div layout-padding>
+		<h3>Ratings - (Supervision module) Principal’s random inspections on teachers and through Annual Confidential Report</h3>
+		<h5>Inspection Module</h5>
+	</div>
+	<div layout-padding>
+		<h3>Teachers’ Competency</h3>
+
+	</div>
+</div>

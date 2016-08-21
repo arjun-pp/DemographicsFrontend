@@ -1,0 +1,19 @@
+<md-icon md-font-icon="icon-magnify" class="icon"></md-icon>
+<md-autocomplete
+      md-selected-item="vm.selectedItem"
+      md-search-text="vm.searchText"
+      md-selected-item-change="vm.selectedItemChange(item.id)"
+      md-items="item in vm.querySearch(vm.searchText)"
+      md-item-text="item.name"
+      md-min-length="2"
+      md-delay="1000"
+      class="search-box"
+      placeholder="Search Schools...">
+    <md-item-template>
+        <h3 md-highlight-text="vm.searchText" md-highlight-flags="^i">{{item.name}}</h3>
+        <h5>{{item.id}}</h5>
+    </md-item-template>
+    <md-not-found>
+        No schools matching "{{vm.searchText}}" were found.
+    </md-not-found>
+</md-autocomplete>

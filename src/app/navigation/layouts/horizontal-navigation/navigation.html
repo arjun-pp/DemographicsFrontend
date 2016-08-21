@@ -1,0 +1,21 @@
+<div class="mobile-navigation" layout="row" layout-align="start center" flex ng-controller="MsNavigationController as vm">
+   <div class="navigation-toggle" hide-gt-sm>
+        <md-button class="md-icon-button" ng-click="vm.toggleHorizontalMobileMenu()"
+                   aria-label="Toggle Mobile Navigation">
+            <md-icon md-font-icon="icon-menu"></md-icon>
+        </md-button>
+    </div>
+    <ms-navigation-horizontal></ms-navigation-horizontal>
+</div>
+<div class="search-container" layout="row" 
+    ng-controller="SearchController as vm"
+    ng-include src="'app/main/search/search.html'">
+</div>
+<!-- 
+<div layout="row" layout-align="start center" class="user-actions">
+    <md-button class="md-icon-button" ng-click="" aria-label="Starred Insights">
+        <a href="/starred"><md-icon md-font-icon="icon-star" class="icon"></md-icon></a>
+    </md-button>
+
+</div>
+-->

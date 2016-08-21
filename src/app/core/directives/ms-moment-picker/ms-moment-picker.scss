@@ -1,0 +1,209 @@
+.moment-picker {
+    position: relative;
+
+    .moment-picker-contents {
+        cursor: pointer;
+    }
+
+    .moment-picker-container {
+        border-radius: 5px;
+        margin-left: 0;
+        color: #404040;
+        font-family: "Helvetica Neue", sans-serif;
+        min-width: 15em;
+        background: #fff;
+        top: 100%;
+        z-index: 5;
+
+        &:before, &:after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border: 8px solid transparent;
+            border-top: none;
+            position: absolute;
+            top: -9px; left: 15px;
+        }
+
+        &:before {
+            border-bottom-color: #f0f3f4;
+            border-width: 9px;
+        }
+
+        &:after {
+            border-bottom-color: #fff;
+            margin-top: 1px;
+            margin-left: 1px;
+        }
+
+        /* all views */
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            table-layout: fixed;
+
+            &.header-view {
+                border-bottom: 2px solid #f6f6f7;
+                height: 50px;
+
+                tr {
+                    height: 50px;
+                }
+
+                th {
+                    border-radius: 0;
+                    white-space: nowrap;
+                    width: auto;
+                    color: #414141;
+
+                    &:first-child,
+                    &:last-child {
+                        color: #a5aab3;
+                        width: 20%;
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+
+                    &:hover {
+                        cursor: default;
+                        background: none;
+                    }
+                }
+            }
+        }
+
+        th, td {
+            min-width: 0;
+            padding: 8px;
+            text-shadow: none;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+
+            &:hover {
+                background: material-color('grey', '100');
+                background-image: none;
+            }
+        }
+
+        th {
+            font-weight: 400;
+            color: #a5aab3;
+        }
+
+        td {
+            &.selected {
+                background: #50caec;
+                color: #fff;
+            }
+        }
+
+        th.disabled, th.disabled:hover, td.disabled, td.disabled:hover {
+            color: #a5aab3;
+            background: none;
+            cursor: default;
+        }
+
+        /* year view */
+        &.year-view td {
+            height: 3.4em;
+        }
+
+        /* month view */
+        &.month-view {
+            .moment-picker-specific-views {
+                padding: 8px;
+
+                th {
+                    background: none;
+                    cursor: default;
+                }
+            }
+
+            td {
+                width: 2.1428571429em;
+            }
+        }
+
+        /* day view, hour view */
+        &.day-view td, .hour-view td {
+            height: 2.3333333333em;
+        }
+
+        /* minute view */
+        &.minute-view td {
+            height: 1.8em;
+        }
+
+        .moment-picker-timepicker {
+            border-top: 2px solid #f6f6f7;
+            min-height: 70px;
+            padding: 0 10px;
+
+            &>*{
+                min-height: 40px;
+                width: 100%;
+                margin: 7px;
+            }
+
+            input {
+                width: 100%;
+                height: 40px;
+                text-align: center;
+                border: none;
+                border-radius: 5px;
+                background-color: rgb(248, 248, 248);
+                color: #444952;
+                -moz-appearance: textfield;
+
+                &::-webkit-input-placeholder {
+                    color: #444952;
+                }
+                &:-moz-placeholder {
+                    color: #444952;
+                    opacity: 1;
+                }
+                &::-moz-placeholder {
+                    color: #444952;
+                    opacity: 1;
+                }
+                &:-ms-input-placeholder {
+                    color: #444952;
+                }
+
+                &::-webkit-inner-spin-button, &::-webkit-outer-spin-button {
+                    -webkit-appearance: none;
+                    margin: 0;
+                }
+            }
+
+            .marker {
+                height: 40px;
+                line-height: 40px;
+                border-radius: 5px;
+                background-color: rgb(248, 248, 248);
+                text-align: center;
+                overflow: hidden;
+                cursor: pointer;
+
+                .marker-am, .marker-pm {
+                    display: block;
+                    transform: translateY(0);
+                    height: 100%;
+                    transition: 200ms ease-in-out;
+                }
+
+                &.pm {
+                    .marker-am, .marker-pm {
+                        transform: translateY(-40px);
+                    }
+                }
+            }
+        }
+    }
+}

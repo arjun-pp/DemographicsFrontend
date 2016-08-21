@@ -1,0 +1,49 @@
+<md-dialog aria-label="Select Indnicator Dialog"  ng-cloak>
+  <form>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>Select an Indicator</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-font-icon="icon-close" aria-label="Close dialog"></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-dialog-content style="min-width:700px;">
+      <md-sidenav
+        class="md-sidenav-left"
+        md-component-id="indicator-menu-sidenav"
+        id="indicator-menu-sidenav"
+        md-is-locked-open="$mdMedia('gt-xs')"
+        md-disable-backdrop
+        style="max-width:350px;background:white; float:left; border-right: 1px solid #eaeaea; " 
+        >
+
+        <md-button aria-label="indicator name" ng-repeat="indicator in indicators track by $index" style="text-align:left;">
+         <h5
+          ng-click="vm.makeActive($index)">{{indicator.display_long}}</h5>
+          <!-- ng-class="{'dark-active-color': indicator.activeInDialog}" -->
+        </md-button>
+      </md-sidenav>
+
+      <div flex class="sidebar right-column" layout-padding>
+      <h3>Filters for {{vm.indicator.display_long}}:</h3>
+      <br>
+        <div ng-repeat="filter in vm.filters track by $index">
+          <h4 class="sort">{{filter.display_name}}</h4>
+          <ul class="sortoptions">
+            <li ng-repeat="option in filter.options">
+              <input type="checkbox" ng-model="option.IsIncluded" ng-checked="option.IsIncluded">
+              <div class="filter-menu">{{option.display_name}}</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <md-button class="md-primary" ng-click="addIndicator(vm.filters)" md-autofocus>
+        Add Indicator
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

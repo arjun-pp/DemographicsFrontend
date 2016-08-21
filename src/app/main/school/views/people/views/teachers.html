@@ -1,0 +1,10 @@
+<md-button class="content-block" aria-label="teacher name" ng-repeat="teacher in vm.teachers track by $index"
+	ng-click="vm.showTeacherProfile($index)">
+	<div layout="row">
+		<!-- <img ng-src="{{teacher.profileImageUrl}}" class="medium-profile-avatar"/> -->
+		<div layout="column">
+			<h3 ng-bind-html="teacher.name"></h3>
+			<h4 ng-bind-html="teacher.empid"></h4>
+		</div>
+	</div>
+</md-button>

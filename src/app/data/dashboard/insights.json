@@ -1,0 +1,34 @@
+{
+	"data": [
+        {
+            "heading": "Teacher not punctual in the class.",
+            "label": "Teacher Attendance",
+            "starred": true,
+            "description": "Mr X, Maths Teacher at ABC Public School is having attendance less than 50% in the last 3months."
+        },
+        {
+            "heading": "4 Schools in Z District needs Infrastructure attention",
+            "label": "Infrastructure",
+            "starred": true,
+            "description": "4 Schools in Z District needs Infrastructure attention."
+        },
+        {
+            "heading": "Teacher not punctual in the class.",
+            "label": "Teacher Attendance",
+            "starred": true,
+            "description": "Mr X, Maths Teacher at ABC Public School is having attendance less than 50% in the last 3months."
+        },
+        {
+            "heading": "Teacher not punctual in the class.",
+            "label": "Teacher Attendance",
+            "starred": true,
+            "description": "Mr X, Maths Teacher at ABC Public School is having attendance less than 50% in the last 3months."
+        },
+        {
+            "heading": "Teacher not punctual in the class.",
+            "label": "Teacher Attendance",
+            "starred": true,
+            "description": "Mr X, Maths Teacher at ABC Public School is having attendance less than 50% in the last 3months."
+        }
+    ]
+}

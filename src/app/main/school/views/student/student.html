@@ -1,0 +1,17 @@
+<div class="student-profile" layout="column" ng-controller="StudentController as vm"
+	layout-padding>
+	<div layout="row">
+		<img ng-src="{{vm.student.profileImageUrl}}" class="medium-profile-avatar"/>
+		<div layout="column">
+			<h2 ng-bind-html="vm.student.name"></h2>
+			<h3 ng-bind-html="vm.student.stud_id"></h3>
+			<h5>Student Profile</h5>
+		</div>
+	</div>
+	<div layout-padding>
+		<h3>Performance - boards, sems, cce</h3>
+	</div>
+	<div layout-padding>
+		<h3>Student Attendance</h3>
+	</div>
+</div>

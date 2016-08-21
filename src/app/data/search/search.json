@@ -1,0 +1,74 @@
+{
+	"data": [
+		{
+			"id": 12,
+			"name": "North",
+			"type": "district",
+			"lat": "77.28982717",
+			"long": "28.66730577"
+		},
+		{
+			"id": 1207,
+			"name": "07",
+			"type": "zone",
+			"lat": "77.28982717",
+			"long": "28.66730577"
+		},
+		{
+			"id": 1208,
+			"name": "08",
+			"type": "zone",
+			"lat": "77.28982717",
+			"long": "28.66730577"
+		},
+		{
+			"id": 1412,
+			"name": "12",
+			"type": "zone",
+			"lat": "77.28982717",
+			"long": "28.66730577"
+		},
+		{
+			"id": 1207004,
+			"name": "Nehru Vihar-SKV",
+			"type": "school",
+			"lat": 77.22049427,
+			"long": 28.70956567
+		},
+		{
+			"id": 1207005,
+			"name": "Jagat Pur- SKV(Mahavir Singh)",
+			"type": "school",
+			"lat": 77.21642169,
+			"long": 28.73977532
+		},
+		{
+			"id": 1207008,
+			"name": "Shankaracharya Marg,Shahed Bhai Bal Mukand-SV",
+			"type": "school",
+			"lat": 77.22666855,
+			"long": 28.68029887
+		},
+		{
+			"id": 1207009,
+			"name": "Burari-SBV",
+			"type": "school",
+			"lat": 77.19654673,
+			"long": 28.74955142
+		},
+		{
+			"id": 1207011,
+			"name": "Shakti Nagar, No.3-S(Co-ed)SSS",
+			"type": "school",
+			"lat": 77.19758758,
+			"long": 28.68190148
+		},
+		{
+			"id": 1207012,
+			"name": "Timar Pur-SBV",
+			"type": "school",
+			"lat": 77.22677164,
+			"long": 28.69574625
+		}
+	]
+}

@@ -1,0 +1,57 @@
+<div layout="column" layout-align="start center" class="scrollable" ms-scroll flex>
+    <md-menu class="profile-dropdown" md-offset="50 0">
+        <a class="toolbar-tool" href="#" ng-click="$mdOpenMenu()">
+            <img class="user-avatar" src="assets/images/avatars/eric.jpg">
+        </a>
+        <md-menu-content class="profile-dropdown-content">
+            <md-menu-item class="profile-wrapper">
+                <div layout="column" layout-align="center center" layout-padding>
+                    <img class="user-avatar" src="assets/images/avatars/eric.jpg">
+                    <h3><b>Paresh Khatri</b></h3>
+                    <h5>Creative Director</h5>
+                </div>
+            </md-menu-item>
+            <md-menu-item layout-padding layout="row">
+                <div class="options"><md-icon md-font-icon="icon-account" layout-padding class="icon"></md-icon></div>
+                <div class="options">Profile & Account</div>
+            </md-menu-item>
+            <md-menu-item layout-padding layout="row">
+                <div class="options"><md-icon md-font-icon="icon-heart" layout-padding class="icon"></md-icon></div>
+                <div class="options">Upgrade Account</div>
+            </md-menu-item>
+            <md-menu-item layout-padding layout="row">
+                <div class="options"><md-icon md-font-icon="icon-settings-aap" layout-padding class="icon"></md-icon></div>
+                <div class="options">Admin Settings</div>
+            </md-menu-item>
+            <md-menu-item layout-padding layout="row">
+                <div class="options"><md-icon md-font-icon="icon-exit-to-app" layout-padding class="icon"></md-icon></div>
+                <div class="options">Signout</div>
+            </md-menu-item>
+        </md-menu-content>
+    </md-menu>
+
+    <div class="toolbar-tools">
+        <a class="toolbar-tool" href="#">
+            <img class="user-avatar" src="assets/images/avatars/profile.jpg">
+        </a>
+        <a class="toolbar-tool" href="#"><img src="assets/images/avatars/profile.jpg"></a>
+        <a class="toolbar-tool active" href="#"><img src="assets/images/avatars/profile.jpg"></a>
+        <a class="toolbar-tool" href="#">
+            <img src="assets/images/avatars/profile.jpg">
+            <i class="status blue"></i>
+        </a>
+        <a class="toolbar-tool" href="#"><img src="assets/images/avatars/profile.jpg"></a>
+
+        <md-button id="tool-all" class="toolbar-tool" ui-sref="app.all-projects"
+                   aria-label="ALl tools">
+            All
+        </md-button>
+    </div>
+
+</div>
+<div layout="column" layout-align="end center" flex="nogrow">
+    <md-button id="tool-add" class="toolbar-tool" ui-sref="app.create-project"
+               aria-label="Add tool">
+        +
+    </md-button>
+</div>

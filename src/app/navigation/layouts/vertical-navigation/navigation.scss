@@ -1,0 +1,32 @@
+#vertical-navigation {
+    width: $navigationWidth;
+    min-width: $navigationWidth;
+    max-width: $navigationWidth;
+    overflow-x: hidden;
+    transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2), width 0.1s linear, min-width 0.1s linear, max-width 0.1s linear;
+    box-shadow: $whiteframe-shadow-6dp;
+
+    .navigation-header {
+        height: 64px;
+        min-height: 64px;
+        background-color: rgba(255, 255, 255, 0.05);
+        padding: 0 16px 0 24px;
+    }
+}
+
+// Folded navigation
+@media only screen and (min-width: $layout-breakpoint-sm) {
+
+    .ms-navigation-folded {
+
+        #content-container {
+            margin-left: $navigationWidth;
+        }
+
+        #vertical-navigation {
+            position: absolute;
+        }
+
+    }
+
+}

@@ -1,0 +1,53 @@
+<div layout="column">
+	<div class="school-cover" layout="column" 
+        ng-hide="showTeacherProfile || showStudentProfile"
+        >
+        <!-- ng-style="vm.schoolData.style" -->
+        <div layout-padding layout="row">
+            <div>
+                <md-button class="md-icon-button left-button" aria-label="Settings" ng-click="vm.close()">
+                    <md-icon md-font-icon="icon-arrow-left" class="icon" style="color:white;font:bold;"></md-icon>
+                </md-button>
+                <div id = "headtext">
+                    <h1>{{vm.schoolData.schname}} ({{vm.schoolData.schid}})</h1>
+                    <h4 ng-bind-html="vm.schoolData.address"></h4>
+                </div>
+            </div>
+        </div>
+	</div>
+
+	<md-tabs md-dynamic-height md-border-bottom md-stretch-tabs="always"
+  		    md-no-ink-bar md-no-ink class="school-tabs"
+            ng-hide="showTeacherProfile || showStudentProfile">
+    	<md-tab>
+    		<md-tab-label>
+    			Analysis
+    		</md-tab-label>
+      	     <md-tab-body class="school-activity">
+        		<div ng-include src="'app/main/school/views/analysis/analysis.html'"></div>
+      	     </md-tab-body>
+    	</md-tab>
+    	<md-tab>
+    		<md-tab-label>
+    			People
+    		</md-tab-label>
+      	     <md-tab-body class="school-activity">
+        		<div ng-include src="'app/main/school/views/people/people.html'"></div>
+      	     </md-tab-body>
+    	</md-tab>
+<!--     	<md-tab>
+    		<md-tab-label>
+    			Insights
+    		</md-tab-label>
+      	     <md-tab-body class="school-activity">
+        		<div ng-include src="'app/main/school/views/insights/insights.html'"></div>
+      	     </md-tab-body>
+    	</md-tab> -->
+    </md-tabs>
+    <div layout="row" ng-if="showTeacherProfile"
+        ng-include src="'app/main/school/views/people/views/teacher-profile.html'">
+    </div>
+    <div layout="row" ng-if="showStudentProfile"
+        ng-include src="'app/main/school/views/people/views/student-profile.html'">
+    </div>
+</div>

@@ -1,0 +1,97 @@
+#layout-horizontal-navigation {
+
+    #toolbar {
+        width: $toolbarWidth;
+        min-width: $toolbarWidth;
+        max-width: $toolbarWidth;
+        overflow-x: hidden;
+        transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2), width 0.1s linear, min-width 0.1s linear, max-width 0.1s linear;
+
+        #tool-add, #tool-all {
+            min-width: 0;
+            min-height: 0;
+            line-height: 40px;
+            font-size: 29px;
+            font-weight: 400;
+            color: white;
+            background-color: #4ecaef;
+        }
+
+        #tool-all {
+            font-size: 16px;
+            font-weight: 600;
+            line-height: 36px;
+            text-transform: none;
+            color: white;
+            border: 2px solid #fff;
+            background-color: #454953;
+        }
+
+        .active:after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-top: 7px solid transparent;
+            border-right: 7px solid #efeff4;
+            border-bottom: 7px solid transparent;
+            position: absolute;
+            z-index: 1;
+            top: 50%;
+            left: 58px;
+            margin-top: -7px
+        }
+
+        .status {
+            position: absolute;
+            top: -8px;
+            left: 30px;
+            width: 16px;
+            height: 16px;
+            border: 3px solid #454953;
+            border-radius: 50%;
+            z-index: 10;
+        }
+
+        .status.blue {
+            background-color: #4ecaef;
+        }
+
+        .scrollable {
+            display: flex;
+        }
+
+        .toolbar-tools {
+            padding: 10px 0;
+        }
+
+        .toolbar-tool {
+            width: 40px;
+            height: 40px;
+            margin: 20px 0;
+            display: block;
+            border-radius: 5px;
+            position: relative;
+            img {
+                border-radius: 4px;
+            }
+        }
+    }
+}
+
+// RESPONSIVE
+@media only screen and (max-width: $layout-breakpoint-sm) {
+
+    #layout-horizontal-navigation {
+
+        #toolbar {
+            padding: 0;
+            width: 55px;
+            min-width: 55px;
+
+            .active:after {
+                left: 42px;
+            }
+        }
+    }
+}

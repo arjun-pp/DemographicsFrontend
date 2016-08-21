@@ -1,0 +1,31 @@
+<h1 style="text-align: center; margin-top:100px; color: #3f3f3f;">Compare Indicators Across Schools</h1>
+ 
+<div style="margin: 30px auto;
+    width: 400px;
+    max-width: 80%;">
+   <div>
+      <!-- <md-icon md-font-icon="icon-magnify" class="icon"></md-icon> -->
+      <md-autocomplete required
+            md-selected-item="vm.selectedItem"
+            md-search-text="vm.searchText"
+            md-selected-item-change="vm.selectedItemChange(item)"
+            md-items="item in vm.querySearch(vm.searchText)"
+            md-item-text="item.name"
+            md-min-length="0"
+            md-delay="1000"
+            class="search-box"
+            placeholder="Select Area (Delhi, Zone or Assembly Constituency)...">
+          <md-item-template>
+              <h3 md-highlight-text="vm.searchText" md-highlight-flags="^i">{{item | formatName}}</h3>
+              <h5>{{item.type}}</h5>
+          </md-item-template>
+          <md-not-found>
+              No zones matching "{{vm.searchText}}" were found.
+          </md-not-found>
+      </md-autocomplete>
+    </div>
+    <div style="float: right;">
+      <md-button class="md-raised md-primary" ng-click="vm.switchView()" style="margin-top:10px; margin-right: 0px;">Next</md-button>
+    </div>
+</div>
+
